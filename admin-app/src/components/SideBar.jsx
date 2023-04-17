@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import logo from '../img/modifix.png';
+import { useSelector } from 'react-redux';
 
 const SideBar = () => {    
+    const { user } = useSelector((state) => state.auth);
     const location = useLocation();
     const [toggle, setToggle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion");
+
+    const isAdmin = (user.role === "Admin" ? true : false);
 
     const onToggle = () => {        
         if(toggle === "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"){
@@ -40,6 +44,7 @@ const SideBar = () => {
 
             <hr className="sidebar-divider"/>
 
+            {isAdmin && <>
             <div className="sidebar-heading">
                 User Management
             </div>
@@ -51,6 +56,7 @@ const SideBar = () => {
             </li>
 
             <hr className="sidebar-divider"/>
+            </>}
 
             <div className="sidebar-heading">
                 Product Management

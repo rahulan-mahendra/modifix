@@ -12,20 +12,28 @@ const loginUser = asyncHandler(async (req, res) => {
   
     // Check for user email
     const user = await User.findOne({ email })
-  
-    if (user && (await bcrypt.compare(password, user.password))) {
-      res.json({
-        _id: user.id,
-        firstname: user.firstname,
-        lastname: user.lastname,
-        name: user.name,
-        email: user.email,
-        token: generateToken(user._id),
-      })
+
+    if(user.active){
+      if (user && (await bcrypt.compare(password, user.password))) {
+        res.json({
+          _id: user.id,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+          token: generateToken(user._id),
+        })
+      } else {
+        res.status(401).json({ message: 'Invalid credentials' })
+        throw new Error('Invalid credentials')
+      }
     } else {
-      res.status(400)
+      res.status(401).json({ message: 'User is not active. Please contact you system administrator' })
       throw new Error('Invalid credentials')
     }
+  
+    
   })
   
   // @desc    Get user data

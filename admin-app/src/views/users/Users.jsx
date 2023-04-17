@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Link,useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
-import { getUsers, reset } from '../../features/user/userSlice'
+import { getUsers } from '../../features/user/userSlice'
 
 const Users = () => {
     const navigate = useNavigate();
@@ -16,14 +16,9 @@ const Users = () => {
             console.log(message)
         }
     
-        dispatch(getUsers());
-
-        return () => {
-            dispatch(reset());
-        }
-    }, [navigate, dispatch, isError, message])
-    
-    console.log(users);
+        dispatch(getUsers());   
+       
+    }, [navigate, dispatch, isError, message])   
 
     
     return (
@@ -56,8 +51,10 @@ const Users = () => {
                                     <td>{user.firstname}</td>
                                     <td>{user.lastname}</td>
                                     <td>{user.email}</td>
-                                    <td>{user.roles}</td>
-                                    <td>Actions</td>
+                                    <td>{user.role}</td>
+                                    <td>
+                                        <Link to={`/admin/users/edit/${user._id}`} className='btn btn-md btn-warning'>Edit</Link>
+                                    </td>
                                 </tr>
                             ))}                                
                             </tbody>
