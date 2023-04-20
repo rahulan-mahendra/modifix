@@ -3,20 +3,11 @@ import SideBar from "./SideBar";
 import TopBar from "./TopBar";
 import Footer from "./Footer";
 import { useSelector } from 'react-redux';
-import { useEffect } from "react";
 
 
 const AdminLayout = () => {
     const navigate = useNavigate();
     const { user } = useSelector((state) => state.auth);
-
-    useEffect(() => {
-      if(!user){
-        navigate('/');
-      }
-    
-    }, [navigate, user])
-    
 
     if(user){
         return (
