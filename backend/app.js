@@ -19,6 +19,7 @@ app.use(errorHandler)
 app.use('/users', require('./routes/userRoutes'));
 app.use('/products', require('./routes/productRoutes'));
 app.use('/admin/auth', require('./routes/adminAuthRoutes.js'));
+app.use('/auth', require('./routes/customerAuthRoutes'));
  
 connectDB().then(()=>{
     console.log('Connected to MongoDB');

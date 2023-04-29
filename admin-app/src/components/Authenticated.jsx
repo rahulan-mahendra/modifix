@@ -1,7 +1,7 @@
 import { Outlet, Navigate, useLocation } from "react-router-dom"
 import { useSelector } from 'react-redux';
-import { useEffect } from "react";
-import { toast } from 'react-toastify';
+// import { useEffect } from "react";
+// import { toast } from 'react-toastify';
 
 
 const Authenticated = () => {

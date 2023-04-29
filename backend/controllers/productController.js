@@ -16,6 +16,20 @@ const getAllProducts = (async (req, res) => {
 
 });
 
+// Get One product
+const getOneProduct = (async (req, res) => {
+    const id = req.params['id'];
+
+    const user = await Product.findById(id).exec();
+
+    if (!user) {
+        return res.status(400).json({ message: 'Product not found' })
+    } else {
+        return res.status(201).json(user);
+    } 
+
+});
+
 //Create new product
 const createNewProduct = (async (req, res) => {
     const {productname, price, quantity} = req.body;
@@ -108,6 +122,7 @@ const deleteProduct = (async (req, res) => {
 
 module.exports = {
     getAllProducts,
+    getOneProduct,
     createNewProduct,
     updateProduct,
     deleteProduct
