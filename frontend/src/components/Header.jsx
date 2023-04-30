@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import Authenticated from './Authenticated';
 
 const Header = () => {
     return (
@@ -19,25 +20,13 @@ const Header = () => {
                                     <ul>
                                         <li><Link to="/">Home</Link></li>
                                         <li><Link to="products">Products</Link></li>
-                                        <li><Link to="about">About</Link></li>
-                                        {/* <li><Link to="contact.html">Contact</Link></li> */}
-                                        
-                                            {/* <div className="header-icons"> */}
-                                        <li>
-                                                <Link className="shopping-cart" to="cart">Cart</Link>
-                                        </li>
-                                        <li>
-                                                <Link className="shopping-cart" to="cart.html"><i className="fas fa-user"></i></Link>
-                                                <ul className="sub-menu">
-                                                    <li><Link to="profile">Profile</Link></li>
-                                                    <li><Link to="logout">Logout</Link></li>
-                                                </ul>
-                                        </li>
-                                            {/* </div> */}
+                                        <li><Link to="about">About</Link></li>                                                                              
+                                        <li><Link to="cart">Cart</Link></li>
+                                        <Authenticated/>
                                     </ul>
                                 </nav>
-                                <Link className="mobile-show search-bar-icon" to="#"><i className="fas fa-search"></i></Link>
-                                <div className="mobile-menu"></div>
+                                {/* <Link className="mobile-show search-bar-icon" to="#"><i className="fas fa-search"></i></Link>
+                                <div className="mobile-menu"></div> */}
                             </div>
                         </div>
                     </div>

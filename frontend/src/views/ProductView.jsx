@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useParams ,useNavigate } from 'react-router-dom';
+import { Link ,useParams ,useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { getProduct } from '../features/product/productSlice';
 
@@ -42,7 +42,7 @@ const ProductView = () => {
                     <div className="row">
                         <div className="col-md-5">
                             <div className="single-product-img">
-                                {/* <img src="assets/img/products/product-img-1.jpg" alt=""/> */}
+                                <img src="../assets/img/products/product-img-1.jpg" alt=""/>
                             </div>
                         </div>
                         <div className="col-md-7">
@@ -53,7 +53,7 @@ const ProductView = () => {
                                     <form >
                                         <input type="number" placeholder="0"/>
                                     </form>
-                                    <a href="cart.html" className="cart-btn"><i className="fas fa-shopping-cart"></i> Add to Cart</a>
+                                    <Link to="cart.html" className="cart-btn"><i className="fas fa-shopping-cart"></i> Add to Cart</Link>
                                 </div>
                             </div>
                         </div>
